@@ -1,18 +1,22 @@
+/* === Base === */
 :root {
-  --accent: #00f7c7;
-  --bg: #0d0d0d;
-  --text: #ffffff;
-  --soft-glow: 0 0 5px var(--accent);
+  --accent: #00ffcc; /* green */
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Antonio', sans-serif;
+  background: #000;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   text-align: center;
-  overflow-x: hidden;
+  transition: all 0.3s ease;
+  animation: flickerBG 3s infinite alternate;
+}
+
+.antonio {
+  font-family: 'Antonio', sans-serif;
+  letter-spacing: 0.03em;
 }
 
 header {
@@ -23,98 +27,126 @@ header {
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--accent);
-  text-shadow: var(--soft-glow);
 }
 
-h2.hero {
-  font-size: 2.5rem;
-  margin-top: 1rem;
-  color: white;
+.logo span {
+  color: #fff;
+}
+
+.glitch {
+  font-size: 2rem;
+  text-shadow: 0 0 6px var(--accent);
+  animation: flicker 1.5s infinite alternate;
+  margin-bottom: 1rem;
 }
 
 .tagline {
-  font-size: 0.9rem;
   color: #aaa;
+  font-size: 1rem;
   margin-bottom: 2rem;
 }
 
+/* === Buttons === */
 button {
-  padding: 0.8rem 1.5rem;
-  border-radius: 7px;
+  padding: 0.7rem 1.3rem;
   border: none;
+  border-radius: 5px;
+  margin: 0.3rem;
   font-weight: bold;
-  margin: 0.5rem;
-  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.btn-group {
+  margin-bottom: 1rem;
+}
+
+button:nth-child(1) {
+  background-color: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+}
+
+button:nth-child(2) {
+  background-color: var(--accent);
+  color: #000;
+}
+
+button:nth-child(3) {
+  background-color: #111;
+  color: var(--accent);
+  border: 1px dashed var(--accent);
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  color: #aaa;
   font-size: 1rem;
   cursor: pointer;
-  background: var(--accent);
-  color: #000;
-  box-shadow: 0 0 5px var(--accent);
-  transition: all 0.2s ease;
 }
 
-button:hover {
-  transform: scale(1.04) rotate(-1deg);
-  filter: brightness(1.1);
-}
-
+/* === Input === */
 input {
   padding: 1rem;
-  width: 80%;
+  width: 90%;
   max-width: 500px;
+  border-radius: 5px;
   margin: 1rem auto;
+  display: block;
   font-size: 1rem;
   background: #111;
-  color: white;
-  border: 2px solid var(--accent);
-  border-radius: 8px;
+  color: #fff;
+  border: 1.5px solid var(--accent);
 }
 
+/* === Footer === */
 footer {
-  color: #888;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  color: #ccc;
   margin-top: 2rem;
   padding-bottom: 3rem;
 }
 
-/* Rant Button */
+/* === Output Box === */
+#output {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+/* === Rant Button === */
 #rant {
   position: fixed;
   bottom: 15px;
   right: 15px;
-  background: var(--accent);
+  background-color: var(--accent);
   color: black;
+  border-radius: 15px 15px 0 0;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.95rem;
   font-weight: bold;
-  padding: 0.9rem 1.4rem;
-  border-radius: 20px 20px 0 0;
-  z-index: 99;
   box-shadow: 0 0 10px var(--accent);
+  cursor: pointer;
+  z-index: 1000;
 }
 
-/* Glitch Effect */
-.glitch-text {
-  animation: flicker 2.5s infinite alternate;
-  text-shadow: 0 0 3px var(--accent), 0 0 6px var(--accent), 0 0 10px #fff2;
-}
-
-.flicker {
-  animation: flicker 2s infinite steps(2, end);
-}
-
-@keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    opacity: 1;
-    text-shadow: var(--soft-glow);
-  }
-  20%, 24%, 55% {
-    opacity: 0.7;
-    text-shadow: none;
-  }
-}
-
-/* Pink Theme */
+/* === Theme: Pink === */
 body.pink-theme {
-  --accent: #ff00aa;
+  --accent: #ff00c8;
+}
+
+/* === Flicker Animations === */
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@keyframes flickerBG {
+  0% { background-color: #000; }
+  100% { background-color: #060606; }
 }
