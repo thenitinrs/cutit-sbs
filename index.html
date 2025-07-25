@@ -3,38 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CutIt.sbs</title>
+  <title>CutIt.sbs - CUT LINKS. RULE INTERNET.</title>
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
   <header>
-    <h1 class="logo glitch-text">CutIt<span>.sbs</span></h1>
+    <h1 class="logo antonio">CutIt<span>.sbs</span></h1>
     <button id="themeToggle">⚔️ Vader Mode</button>
   </header>
 
   <main>
-    <h2 class="hero glitch-text flicker">CUT LINKS. <span>RULE</span> INTERNET.</h2>
-    <p class="tagline">Fast AF. 100% Private. Trusted by devs, memelords & grandma’s burner phone.</p>
+    <h2 class="glitch antonio">CUT LINKS. RULE INTERNET.</h2>
+    <input type="text" id="urlInput" placeholder="Paste your long URL here..." />
 
     <div class="btn-group">
-      <button id="shortenBtn">🚀 Shorten</button>
       <button id="qrBtn">🎯 QR Me</button>
-      <button id="customBtn">🧠 Custom</button>
+      <button id="finalShorten">🚀 Bam! Shorten It</button>
+      <button id="customBtn">💸 ₹1 Custom URL</button>
     </div>
 
-    <input type="text" id="urlInput" placeholder="Paste a thicc long link..."/>
-    <button id="finalShorten">Bam! Shorten It</button>
     <div id="output"></div>
   </main>
 
   <footer>
-    🧠 We don’t track, trace, or peek. Every QR is local. Surveillance is gross.
+    Made by Nitin Raj Singh for Gen Z & Internet Rebels 💥
   </footer>
 
   <button id="rant">💬 Need to rant?</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script type="module" src="script.js"></script>
   <script>
     document.getElementById("themeToggle").onclick = () =>
