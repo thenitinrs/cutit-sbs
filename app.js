@@ -1,44 +1,44 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CutIt.sbs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="logo glitch-text">CutIt<span>.sbs</span></h1>
+    <button id="themeToggle">⚔️ Vader Mode</button>
+  </header>
 
-// Firebase Config (safe keys)
-const firebaseConfig = {
-  apiKey: "AIzaSyDk5GSy3y0g9iO6S6mzcr-MoZ-mGNJojOI",
-  authDomain: "cutit-74ff4.firebaseapp.com",
-  projectId: "cutit-74ff4",
-  storageBucket: "cutit-74ff4.firebasestorage.app",
-  messagingSenderId: "665495125746",
-  appId: "1:665495125746:web:eb6dc0d361ab485fe25a6b",
-  measurementId: "G-WC70F5PK7P"
-};
+  <main>
+    <h2 class="hero glitch-text flicker">CUT LINKS. <span>RULE</span> INTERNET.</h2>
+    <p class="tagline">Fast AF. 100% Private. Trusted by devs, memelords & grandma’s burner phone.</p>
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const analytics = getAnalytics(app);
+    <div class="btn-group">
+      <button id="shortenBtn">🚀 Shorten</button>
+      <button id="qrBtn">🎯 QR Me</button>
+      <button id="customBtn">🧠 Custom</button>
+    </div>
 
-window.shortenLink = async () => {
-  const longUrl = document.getElementById("longUrl").value;
-  if (!longUrl) return alert("Paste something, bro 🤨");
+    <input type="text" id="urlInput" placeholder="Paste a thicc long link..."/>
+    <button id="finalShorten">Bam! Shorten It</button>
+    <div id="output"></div>
+  </main>
 
-  try {
-    const docRef = await addDoc(collection(db, "links"), {
-      longUrl,
-      createdAt: new Date()
-    });
+  <footer>
+    🧠 We don’t track, trace, or peek. Every QR is local. Surveillance is gross.
+  </footer>
 
-    const shortUrl = `https://cutit.sbs/l/${docRef.id}`;
-    document.getElementById("output").innerHTML = `🔗 <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
-  } catch (err) {
-    console.error(err);
-    alert("Bruh, Firestore said no 😤");
-  }
-};
+  <button id="rant">💬 Need to rant?</button>
 
-window.generateQR = () => {
-  alert("QR feature dropping soon, hold tight 🤖");
-};
-
-window.customLink = () => {
-  window.location.href = "https://rzp.io/l/custom-url-cutit";
-};
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script type="module" src="script.js"></script>
+  <script>
+    document.getElementById("themeToggle").onclick = () =>
+      document.body.classList.toggle("pink-theme");
+  </script>
+</body>
+</html>
