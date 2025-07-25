@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CutIt.sbs</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    :root {
+      --accent: #00ffcc; /* default: green */
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -14,7 +19,7 @@
 
   <main>
     <h2><span class="glitch">CUT LINKS. <span class="green">RULE</span> INTERNET.</span></h2>
-    <p class="tagline">Fast AF. 100% Private. Trusted by devs, memelords, crypto bros & grandma’s burner phone.</p>
+    <p class="tagline">Fast AF. 100% Private. Trusted by devs, memelords, crypto bros & grandma’s burner phone. 🔗</p>
 
     <div class="btn-group">
       <button onclick="shortenLink()">🚀 Shorten</button>
@@ -22,17 +27,23 @@
       <button onclick="customLink()">🧠 Custom</button>
     </div>
 
-    <input type="text" id="longUrl" placeholder="Paste a thicc long link…" />
+    <input type="text" id="longUrl" placeholder="Paste a thicc long link…"/>
     <button onclick="shortenLink()">Bam! Shorten It</button>
 
     <p id="output"></p>
   </main>
 
   <footer>
-    <p>🧠 We don’t track, trace, or peek. Every QR is generated on YOUR device.</p>
-    <button id="rant">💬 Need to rant?</button>
+    <p>🧠 We don’t track, trace, or peek. Every QR is generated on YOUR device. Because surveillance is gross. – Team CutIt</p>
   </footer>
 
+  <button id="rant">💬 Need to rant?</button>
+
   <script type="module" src="app.js"></script>
+  <script>
+    document.getElementById("themeToggle").onclick = () => {
+      document.body.classList.toggle("pink-theme");
+    };
+  </script>
 </body>
 </html>
