@@ -1,49 +1,73 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-const chatBotData = {
-  "Hello": "Hey there! 👋",
-  "What's your name?": "I'm the CutIt ChatBot. I vibe hard and protect privacy.",
-  "How does this work?": "Paste a long URL, hit 'Shorten'. Or get a QR instantly!",
-  "Help me": "You got it. Use the buttons above or ask me anything!",
-  "Goodbye": "Later gator 🐊",
-  "Thank you": "Anytime!",
-  "Explain AI": "AI is like magic code that learns patterns and helps you do stuff.",
-  "What can you do?": "Shorten links, make QRs, chat like a pro.",
-  "Set language to English": "Language set to English!",
-  "Clear history": "I don’t keep any 👀"
+const firebaseConfig = {
+  apiKey: "AIzaSyDk5GSy3y0g9iO6S6mzcr-MoZ-mGNJojOI",
+  authDomain: "cutit-74ff4.firebaseapp.com",
+  projectId: "cutit-74ff4",
+  storageBucket: "cutit-74ff4.appspot.com",
+  messagingSenderId: "665495125746",
+  appId: "1:665495125746:web:eb6dc0d361ab485fe25a6b",
 };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const shortenBtn = document.getElementById("shortenBtn");
+const qrBtn = document.getElementById("qrBtn");
+const customBtn = document.getElementById("customBtn");
+const finalShorten = document.getElementById("finalShorten");
+
+shortenBtn.onclick = () => alert("Paste a link and press 'Bam! Shorten It'.");
+qrBtn.onclick = () => generateQR();
+customBtn.onclick = () => alert("Custom shortening coming soon.");
+
+finalShorten.onclick = async () => {
+  const input = document.getElementById("urlInput").value;
+  if (!input) return;
+  const docRef = await addDoc(collection(db, "links"), { url: input });
+  const shortLink = `https://cutit.sbs/l/${docRef.id}`;
+  document.getElementById("output").innerText = shortLink;
+  generateQR(shortLink);
+};
+
+function generateQR(link) {
+  const input = link || document.getElementById("urlInput").value;
+  if (!input) return;
+  QRCode.toDataURL(input).then(url => {
+    const img = new Image();
+    img.src = url;
+    document.getElementById("output").innerHTML = '';
+    document.getElementById("output").appendChild(img);
+  });
+}
 
 function toggleChat() {
-  const box = document.getElementById('chatbot');
-  box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+  const chat = document.getElementById("chatBox");
+  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
 }
-function handleChatKey(e) {
+
+const chatbot = {
+  "hello": "Yo! 🔥",
+  "what's your name?": "I'm CutItBot 🤖",
+  "how does this work?": "Paste a link > Click ‘Shorten’ or ‘QR Me’.",
+  "help me": "You got it! Type your command or paste a link.",
+  "goodbye": "Bye 👋 Stay private!",
+  "thank you": "Anytime 💚",
+  "explain ai": "AI = machine that learns patterns & mimics thinking.",
+  "generate qr code": generateQR,
+};
+
+function handleChat(e) {
   if (e.key === "Enter") {
-    const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    const display = document.getElementById('chatDisplay');
-    const response = chatBotData[msg] || "I'm still learning. Try something else!";
-    display.innerHTML += `<p><b>You:</b> ${msg}</p><p><b>Bot:</b> ${response}</p>`;
-    input.value = '';
+    const val = e.target.value.toLowerCase();
+    const res = chatbot[val] || "I’m not sure how to help with that 😅";
+    if (typeof res === "function") {
+      res();
+      document.getElementById("chatContent").innerHTML += `<div>QR generated ✅</div>`;
+    } else {
+      document.getElementById("chatContent").innerHTML += `<div>${res}</div>`;
+    }
+    e.target.value = "";
   }
 }
-
-document.getElementById('shortenBtn').onclick = () => {
-  const input = document.getElementById('linkInput').value;
-  if (!input) return alert("Paste a link first!");
-  document.getElementById('output').innerText = "cutit.sbs/" + Math.random().toString(36).substr(2, 5);
-};
-
-document.getElementById('qrBtn').onclick = () => {
-  const input = document.getElementById('linkInput').value;
-  if (!input) return alert("Paste a link first!");
-  QRCode.toCanvas(document.getElementById('qrCanvas'), input, error => {
-    if (error) console.error(error);
-  });
-};
-
-document.getElementById('customBtn').onclick = () => {
-  const input = prompt("Enter custom ending:");
-  if (input) {
-    document.getElementById('output').innerText = "cutit.sbs/" + input;
-  }
-};
