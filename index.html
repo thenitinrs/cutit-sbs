@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CutIt.sbs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1><span class="green">CutIt</span>.sbs</h1>
+    <button id="themeToggle">⚔️ Vader Mode</button>
+  </header>
+
+  <main>
+    <h2><span class="glitch">CUT LINKS. <span class="green">RULE</span> INTERNET.</span></h2>
+    <p class="tagline">Fast AF. 100% Private. Trusted by devs, memelords, crypto bros & grandma’s burner phone.</p>
+
+    <div class="btn-group">
+      <button onclick="shortenLink()">🚀 Shorten</button>
+      <button onclick="generateQR()">📀 QR Me</button>
+      <button onclick="customLink()">🧠 Custom</button>
+    </div>
+
+    <input type="text" id="longUrl" placeholder="Paste a thicc long link…" />
+    <button onclick="shortenLink()">Bam! Shorten It</button>
+
+    <p id="output"></p>
+  </main>
+
+  <footer>
+    <p>🧠 We don’t track, trace, or peek. Every QR is generated on YOUR device.</p>
+    <button id="rant">💬 Need to rant?</button>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
