@@ -1,152 +1,67 @@
-/* === Base === */
-:root {
-  --accent: #00ffcc; /* green */
-}
+// Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-body {
-  background: #000;
-  color: #fff;
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  transition: all 0.3s ease;
-  animation: flickerBG 3s infinite alternate;
-}
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyDk5GSy3y0g9iO6S6mzcr-MoZ-mGNJojOI",
+  authDomain: "cutit-74ff4.firebaseapp.com",
+  projectId: "cutit-74ff4",
+  storageBucket: "cutit-74ff4.appspot.com",
+  messagingSenderId: "665495125746",
+  appId: "1:665495125746:web:eb6dc0d361ab485fe25a6b",
+  measurementId: "G-WC70F5PK7P"
+};
 
-.antonio {
-  font-family: 'Antonio', sans-serif;
-  letter-spacing: 0.03em;
-}
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
+// DOM elements
+const input = document.getElementById("urlInput");
+const outputBox = document.getElementById("output");
+const shortenBtn = document.getElementById("finalShorten");
+const qrBtn = document.getElementById("qrBtn");
 
-.logo {
-  font-size: 2rem;
-  color: var(--accent);
-}
+const clearOutput = () => (outputBox.innerHTML = "");
 
-.logo span {
-  color: #fff;
-}
+const showQR = (url) => {
+  QRCode.toDataURL(url, { margin: 1 }, (err, dataUrl) => {
+    if (err) return console.error(err);
+    outputBox.innerHTML += `
+      <img src="${dataUrl}" alt="QR code" style="margin-top:1rem;width:160px;border-radius:8px;box-shadow:0 0 8px var(--accent);" />
+    `;
+  });
+};
 
-.glitch {
-  font-size: 2rem;
-  text-shadow: 0 0 6px var(--accent);
-  animation: flicker 1.5s infinite alternate;
-  margin-bottom: 1rem;
-}
+shortenBtn.onclick = async () => {
+  clearOutput();
+  const longUrl = input.value.trim();
+  if (!longUrl) return alert("Paste something first!");
 
-.tagline {
-  color: #aaa;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
+  try {
+    const code = Math.random().toString(36).slice(2, 8);
+    await addDoc(collection(db, "links"), {
+      code,
+      longUrl,
+      createdAt: Date.now()
+    });
 
-/* === Buttons === */
-button {
-  padding: 0.7rem 1.3rem;
-  border: none;
-  border-radius: 5px;
-  margin: 0.3rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
-}
+    const shortUrl = `https://cutit.sbs/l/${code}`;
+    outputBox.innerHTML = `🔗 <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+    showQR(shortUrl);
+  } catch (e) {
+    console.error(e);
+    alert("Error! Firestore hiccup?");
+  }
+};
 
-.btn-group {
-  margin-bottom: 1rem;
-}
+qrBtn.onclick = () => {
+  clearOutput();
+  const rawUrl = input.value.trim();
+  if (!rawUrl) return alert("Paste a URL first!");
+  outputBox.innerHTML = `🎯 QR for:<br><a href="${rawUrl}" target="_blank">${rawUrl}</a>`;
+  showQR(rawUrl);
+};
 
-button:nth-child(1) {
-  background-color: transparent;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-}
-
-button:nth-child(2) {
-  background-color: var(--accent);
-  color: #000;
-}
-
-button:nth-child(3) {
-  background-color: #111;
-  color: var(--accent);
-  border: 1px dashed var(--accent);
-}
-
-#themeToggle {
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* === Input === */
-input {
-  padding: 1rem;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 5px;
-  margin: 1rem auto;
-  display: block;
-  font-size: 1rem;
-  background: #111;
-  color: #fff;
-  border: 1.5px solid var(--accent);
-}
-
-/* === Footer === */
-footer {
-  font-size: 0.85rem;
-  color: #ccc;
-  margin-top: 2rem;
-  padding-bottom: 3rem;
-}
-
-/* === Output Box === */
-#output {
-  margin-top: 1rem;
-  font-size: 1rem;
-  color: var(--accent);
-}
-
-/* === Rant Button === */
-#rant {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  background-color: var(--accent);
-  color: black;
-  border-radius: 15px 15px 0 0;
-  padding: 0.7rem 1.3rem;
-  font-size: 0.95rem;
-  font-weight: bold;
-  box-shadow: 0 0 10px var(--accent);
-  cursor: pointer;
-  z-index: 1000;
-}
-
-/* === Theme: Pink === */
-body.pink-theme {
-  --accent: #ff00c8;
-}
-
-/* === Flicker Animations === */
-@keyframes flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
-}
-
-@keyframes flickerBG {
-  0% { background-color: #000; }
-  100% { background-color: #060606; }
-}
+document.getElementById("customBtn").onclick = () =>
+  window.location.href = "https://rzp.io/l/custom-url-cutit";
