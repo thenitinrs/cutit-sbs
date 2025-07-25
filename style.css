@@ -1,37 +1,129 @@
+/* === Vader Mode UI === */
 body {
   background: #000;
   color: #fff;
   font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
   text-align: center;
-  padding: 2rem;
+  transition: all 0.3s ease;
 }
-.green {
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+h1 .green {
   color: #00ffcc;
 }
-.glitch {
-  font-weight: bold;
+
+h2 {
   font-size: 2rem;
-  text-shadow: 0 0 5px #0f0, 0 0 10px #0ff;
+  font-weight: bold;
+  margin: 0.5rem 0 1rem;
 }
+
+.glitch {
+  text-shadow: 0 0 4px #0ff, 0 0 8px #0ff;
+  color: var(--accent, #00ffcc);
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+/* === Buttons === */
+button {
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: 5px;
+  margin: 0.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-group {
+  margin-bottom: 1rem;
+}
+
+button:nth-child(1) {
+  background-color: var(--accent, #00ffcc);
+  color: #000;
+}
+
+button:nth-child(2),
+button:nth-child(3) {
+  background-color: transparent;
+  border: 1.5px solid var(--accent, #00ffcc);
+  color: var(--accent, #00ffcc);
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* === Input === */
 input {
   padding: 1rem;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
+  border-radius: 5px;
   margin: 1rem auto;
   display: block;
+  font-size: 1rem;
+  background: #111;
+  color: #fff;
+  border: 1.5px solid var(--accent, #00ffcc);
 }
-button {
-  padding: 0.7rem 1.5rem;
-  margin: 0.5rem;
-  background: #00ffcc;
-  border: none;
-  border-radius: 5px;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-}
+
+/* === Footer === */
 footer {
-  font-size: 0.9rem;
-  color: #aaa;
+  font-size: 0.85rem;
+  color: #ccc;
   margin-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+/* === Output === */
+#output {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--accent, #00ffcc);
+}
+
+/* === Rant Button === */
+#rant {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: var(--accent, #00ffcc);
+  color: black;
+  border-radius: 15px 15px 0 0;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px var(--accent, #00ffcc);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* === Pink Theme Toggle === */
+body.pink-theme {
+  --accent: #ff00c8;
 }
