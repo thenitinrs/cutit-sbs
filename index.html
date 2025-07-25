@@ -4,47 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CutIt.sbs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"/>
-  <style>
-    :root {
-      --accent: #00ffcc;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1><span class="logo">CutIt</span>.sbs</h1>
+    <h1 class="logo glitch-text">CutIt<span>.sbs</span></h1>
     <button id="themeToggle">⚔️ Vader Mode</button>
   </header>
 
   <main>
-    <h2 class="headline"><span class="glitchy">CUT LINKS. <span class="accent">RULE</span> INTERNET.</span></h2>
-    <p class="tagline">Fast AF. Private as a hacker’s vault. Built for devs, memelords & crypto cults. 🧠</p>
+    <h2 class="hero glitch-text flicker">CUT LINKS. <span>RULE</span> INTERNET.</h2>
+    <p class="tagline">Fast AF. 100% Private. Trusted by devs, memelords & grandma’s burner phone.</p>
 
     <div class="btn-group">
-      <button onclick="shortenLink()">🚀 Shorten</button>
-      <button onclick="generateQR()">📀 QR Me</button>
-      <button onclick="customLink()">🧠 Custom</button>
+      <button id="shortenBtn">🚀 Shorten</button>
+      <button id="qrBtn">🎯 QR Me</button>
+      <button id="customBtn">🧠 Custom</button>
     </div>
 
-    <input type="text" id="longUrl" placeholder="Paste a thicc long link…"/>
-    <button onclick="shortenLink()">Bam! Shorten It</button>
-
-    <p id="output"></p>
+    <input type="text" id="urlInput" placeholder="Paste a thicc long link..."/>
+    <button id="finalShorten">Bam! Shorten It</button>
+    <div id="output"></div>
   </main>
 
   <footer>
-    <p>👾 No logs. No stalk. Every QR stays on your machine. Welcome to the dark web lite. – Team CutIt</p>
+    🧠 We don’t track, trace, or peek. Every QR is local. Surveillance is gross.
   </footer>
 
   <button id="rant">💬 Need to rant?</button>
 
-  <script type="module" src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script type="module" src="script.js"></script>
   <script>
-    document.getElementById("themeToggle").onclick = () => {
+    document.getElementById("themeToggle").onclick = () =>
       document.body.classList.toggle("pink-theme");
-    };
   </script>
 </body>
 </html>
