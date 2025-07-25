@@ -1,9 +1,8 @@
-// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
 
-// Firebase Config (safe public info)
+// Firebase Config (safe keys)
 const firebaseConfig = {
   apiKey: "AIzaSyDk5GSy3y0g9iO6S6mzcr-MoZ-mGNJojOI",
   authDomain: "cutit-74ff4.firebaseapp.com",
@@ -14,18 +13,13 @@ const firebaseConfig = {
   measurementId: "G-WC70F5PK7P"
 };
 
-// Init Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const analytics = getAnalytics(app);
 
-// Shorten link
 window.shortenLink = async () => {
   const longUrl = document.getElementById("longUrl").value;
-  if (!longUrl) {
-    alert("Paste something, bro!");
-    return;
-  }
+  if (!longUrl) return alert("Paste something, bro 🤨");
 
   try {
     const docRef = await addDoc(collection(db, "links"), {
@@ -34,20 +28,17 @@ window.shortenLink = async () => {
     });
 
     const shortUrl = `https://cutit.sbs/l/${docRef.id}`;
-    document.getElementById("output").innerHTML = `
-      🔗 <a href="${shortUrl}" target="_blank">${shortUrl}</a>
-    `;
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Oops! Something broke.");
+    document.getElementById("output").innerHTML = `🔗 <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+  } catch (err) {
+    console.error(err);
+    alert("Bruh, Firestore said no 😤");
   }
 };
 
-// QR & Custom buttons
 window.generateQR = () => {
-  alert("QR code feature coming soon!");
+  alert("QR feature dropping soon, hold tight 🤖");
 };
 
 window.customLink = () => {
-  window.location.href = "https://rzp.io/l/custom-url-cutit"; // Razorpay ₹1 link
+  window.location.href = "https://rzp.io/l/custom-url-cutit";
 };
