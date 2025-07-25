@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-// Firebase Config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDk5GSy3y0g9iO6S6mzcr-MoZ-mGNJojOI",
   authDomain: "cutit-74ff4.firebaseapp.com",
@@ -13,33 +13,59 @@ const firebaseConfig = {
   measurementId: "G-WC70F5PK7P"
 };
 
-// Init Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Shorten
-document.getElementById("finalShorten").onclick = async () => {
-  const url = document.getElementById("urlInput").value;
-  if (!url) return alert("👻 Paste something first!");
+// DOM elements
+const input = document.getElementById("urlInput");
+const outputBox = document.getElementById("output");
+const shortenBtn = document.getElementById("finalShorten");
+const qrBtn = document.getElementById("qrBtn");
 
-  const code = Math.random().toString(36).substring(2, 8);
-  await addDoc(collection(db, "links"), {
-    code,
-    url
+const clearOutput = () => (outputBox.innerHTML = "");
+
+const showQR = (url) => {
+  QRCode.toDataURL(url, { margin: 1 }, (err, dataUrl) => {
+    if (err) return console.error(err);
+    outputBox.innerHTML += `
+      <img src="${dataUrl}" alt="QR code" />
+    `;
   });
+};
 
-  const short = `https://cutit.sbs/l/${code}`;
-  document.getElementById("output").innerHTML = `
-    <p>✨ Your link:</p>
-    <a href="${short}" target="_blank">${short}</a>
-  `;
+shortenBtn.onclick = async () => {
+  document.getElementById("clickSound").play();
+  clearOutput();
+  const longUrl = input.value.trim();
+  if (!longUrl) return alert("Paste something first!");
 
-  // QR Code
-  QRCode.toDataURL(short, (err, url) => {
-    if (!err) {
-      document.getElementById("output").innerHTML += `
-        <img src="${url}" style="margin-top:1rem;width:150px;"/>
-      `;
-    }
-  });
+  try {
+    const code = Math.random().toString(36).slice(2, 8);
+    await addDoc(collection(db, "links"), {
+      code,
+      longUrl,
+      createdAt: Date.now()
+    });
+
+    const shortUrl = `https://cutit.sbs/l/${code}`;
+    outputBox.innerHTML = `🔗 <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+    showQR(shortUrl);
+  } catch (e) {
+    console.error(e);
+    alert("Error! Firestore hiccup?");
+  }
+};
+
+qrBtn.onclick = () => {
+  document.getElementById("clickSound").play();
+  clearOutput();
+  const rawUrl = input.value.trim();
+  if (!rawUrl) return alert("Paste a URL first!");
+  outputBox.innerHTML = `🎯 QR for:<br><a href="${rawUrl}" target="_blank">${rawUrl}</a>`;
+  showQR(rawUrl);
+};
+
+document.getElementById("customBtn").onclick = () => {
+  document.getElementById("clickSound").play();
+  window.location.href = "https://rzp.io/l/custom-url-cutit";
 };
