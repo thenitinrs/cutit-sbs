@@ -1,136 +1,120 @@
-/* Font */
-body, button, input {
-  font-family: 'Antonio', sans-serif;
+:root {
+  --accent: #00f7c7;
+  --bg: #0d0d0d;
+  --text: #ffffff;
+  --soft-glow: 0 0 5px var(--accent);
 }
 
 body {
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Antonio', sans-serif;
   margin: 0;
   padding: 0;
   text-align: center;
   overflow-x: hidden;
-  transition: background 0.4s ease;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.8rem;
   color: var(--accent);
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px var(--accent);
+  text-shadow: var(--soft-glow);
 }
 
-h2.headline {
+h2.hero {
   font-size: 2.5rem;
-  font-weight: 700;
-  animation: glitch 2s infinite alternate;
-}
-
-.glitchy {
-  text-shadow: 0 0 4px var(--accent), 0 0 10px var(--accent), 0 0 2px #fff;
-  color: var(--accent);
-}
-
-.accent {
-  color: var(--accent);
+  margin-top: 1rem;
+  color: white;
 }
 
 .tagline {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #aaa;
   margin-bottom: 2rem;
 }
 
-input {
-  padding: 1rem;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 6px;
-  margin: 1.2rem auto;
-  display: block;
-  background: #111;
-  color: #fff;
-  border: 1.5px solid var(--accent);
-  font-size: 1rem;
-}
-
 button {
-  padding: 0.9rem 1.5rem;
-  border-radius: 8px;
-  margin: 0.5rem;
-  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border-radius: 7px;
   border: none;
+  font-weight: bold;
+  margin: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
   cursor: pointer;
-  background-color: var(--accent);
+  background: var(--accent);
   color: #000;
-  box-shadow: 0 0 10px var(--accent);
-  transition: transform 0.2s ease, background 0.3s;
+  box-shadow: 0 0 5px var(--accent);
+  transition: all 0.2s ease;
 }
 
 button:hover {
-  transform: scale(1.07);
+  transform: scale(1.04) rotate(-1deg);
+  filter: brightness(1.1);
 }
 
-.btn-group button:nth-child(2),
-.btn-group button:nth-child(3) {
-  background-color: transparent;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-}
-
-#themeToggle {
-  background: none;
-  border: none;
-  color: #aaa;
+input {
+  padding: 1rem;
+  width: 80%;
+  max-width: 500px;
+  margin: 1rem auto;
   font-size: 1rem;
-  cursor: pointer;
+  background: #111;
+  color: white;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
 }
 
-/* Rant bubble */
+footer {
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+/* Rant Button */
 #rant {
   position: fixed;
   bottom: 15px;
   right: 15px;
   background: var(--accent);
-  color: #000;
-  padding: 0.7rem 1.4rem;
-  border-radius: 20px 20px 0 0;
+  color: black;
   font-weight: bold;
-  font-size: 1rem;
-  z-index: 999;
+  padding: 0.9rem 1.4rem;
+  border-radius: 20px 20px 0 0;
+  z-index: 99;
   box-shadow: 0 0 10px var(--accent);
-  transition: 0.3s ease;
 }
 
-footer {
-  font-size: 0.8rem;
-  color: #999;
-  margin-top: 3rem;
-  padding: 2rem;
+/* Glitch Effect */
+.glitch-text {
+  animation: flicker 2.5s infinite alternate;
+  text-shadow: 0 0 3px var(--accent), 0 0 6px var(--accent), 0 0 10px #fff2;
 }
 
-/* Glitch animation */
-@keyframes glitch {
-  0% {
-    text-shadow: 2px 2px #0ff, -2px -2px #f0f;
+.flicker {
+  animation: flicker 2s infinite steps(2, end);
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow: var(--soft-glow);
   }
-  50% {
-    text-shadow: -2px 2px #f0f, 2px -2px #0ff;
-  }
-  100% {
-    text-shadow: 0 0 8px var(--accent);
+  20%, 24%, 55% {
+    opacity: 0.7;
+    text-shadow: none;
   }
 }
 
-/* Pink Theme Mode */
+/* Pink Theme */
 body.pink-theme {
-  --accent: #ff00c8;
+  --accent: #ff00aa;
 }
