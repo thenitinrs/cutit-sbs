@@ -1,150 +1,126 @@
-
 body {
-  margin: 0;
+  background-color: #000;
+  color: #fff;
   font-family: 'Antonio', sans-serif;
-  background: #000;
-  color: white;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  transition: background 0.3s;
 }
 
-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-.logo {
-  font-size: 2rem;
-  color: #00ffcc;
-}
-
-.logo span {
-  color: white;
-}
-
-#toggleMode {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-h1 {
-  font-size: 2.5rem;
+.container {
   text-align: center;
-  margin-bottom: 0.2rem;
+  margin-top: 10vh;
+  width: 90%;
 }
 
-.flicker {
-  animation: flicker 2s infinite;
+.title {
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+  animation: flicker 2s infinite alternate;
+}
+
+.rule {
   color: #00ffcc;
-}
-
-.glow {
-  color: white;
-  text-shadow: 0 0 5px #00ffcc;
 }
 
 .subtitle {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #aaa;
+  font-size: 1.25rem;
+  margin-bottom: 2em;
+  color: #ccc;
 }
 
 .button-group {
   display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 2em;
 }
 
-.tab-btn {
-  border: 1px solid #00ffcc;
-  background: black;
-  color: #00ffcc;
-  padding: 0.5rem 1rem;
-  font-family: inherit;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.tab-btn.active {
+.button-group button {
+  padding: 0.75em 1.5em;
+  font-size: 1.1rem;
+  border: none;
   background: #00ffcc;
-  color: black;
+  color: #000;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 500px;
+  gap: 1em;
+  max-width: 400px;
+  margin: 0 auto 2em;
 }
 
-input {
-  padding: 0.8rem;
+.input-group input {
+  padding: 1em;
   font-size: 1rem;
-  border-radius: 8px;
-  border: 2px solid #00ffcc;
-  background: #111;
-  color: white;
-  outline: none;
-}
-
-button#shortenBtn {
-  padding: 0.8rem;
-  font-size: 1rem;
-  background: #00ffcc;
+  border-radius: 5px;
   border: none;
-  color: black;
-  border-radius: 8px;
+}
+
+.input-group button {
+  padding: 1em;
+  font-size: 1rem;
+  background-color: #00ffcc;
+  color: #000;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-}
-
-#outputBox {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-#shortenedLink {
-  margin-bottom: 1rem;
-  color: #00ffcc;
-  font-size: 1.1rem;
-}
-
-#qrCanvas {
-  margin-top: 1rem;
 }
 
 footer {
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #888;
-  max-width: 600px;
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 3em;
 }
 
-#rantBtn {
-  margin-top: 1rem;
+#chatBubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   background: #00ffcc;
-  color: black;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  color: #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
+#chatBox {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: #111;
+  border: 1px solid #00ffcc;
+  display: none;
+  flex-direction: column;
+}
+
+#chatContent {
+  height: 200px;
+  overflow-y: auto;
+  padding: 1em;
+}
+
+#chatInput {
+  padding: 1em;
+  border: none;
+  border-top: 1px solid #00ffcc;
+  background: #000;
+  color: #fff;
+}
+
 @keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
-  }
-  20%, 24%, 55% {
-    opacity: 0;
-  }
+  0% {opacity: 1;}
+  50% {opacity: 0.6;}
+  100% {opacity: 1;}
 }
