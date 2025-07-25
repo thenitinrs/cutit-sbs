@@ -1,43 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CutIt.sbs</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CutIt.sbs</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <header style="padding: 15px; font-family: Antonio, sans-serif; font-size: 1.8rem; text-align: left; color: #0f0;">
+<header style="position: absolute; top: 10px; left: 20px; font-family: Antonio, sans-serif; font-size: 1.5rem; color: #ff3399; z-index: 999;">
     CutIt.<span style="color:#fff">sbs</span>
-  </header>
-  <div class="container">
-    <h1 class="title flicker">CUT LINKS. <span class="rule">RULE INTERNET.</span></h1>
-    <p class="subtitle">Fast AF. 100% Private. Trusted by devs, memelords, crypto bros & grandma’s burner phone.</p>
-    
-    <div class="button-group">
-      <button id="shortenBtn">🚀 Shorten</button>
-      <button id="qrBtn">🎯 QR Me</button>
-      <button id="customBtn">🧠 Custom</button>
-    </div>
-
-    <div class="input-group">
-      <input type="text" id="urlInput" placeholder="Paste a thicc long link…" />
-      <button id="finalShorten">Bam! Shorten It</button>
-    </div>
-
-    <div id="output"></div>
-
-    <footer>🛑 We don’t track, trace, or peek. Every QR is generated on YOUR device. Because surveillance is gross. – Team CutIt</footer>
-  </div>
-
-  <div id="chatBubble" onclick="toggleChat()">💬</div>
-  <div id="chatBox">
-    <div id="chatContent"></div>
-    <input type="text" id="chatInput" placeholder="Try: delete, qr, contact..." onkeypress="handleChat(event)" />
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-  <script src="script.js"></script>
+</header>
+<div class="container">
+<h1 class="title flicker">CUT LINKS. <span class="rule">RULE INTERNET.</span></h1>
+<p class="subtitle">Fast AF. 100% Private. Trusted by devs, memelords, crypto bros &amp; grandma’s burner phone.</p>
+<div class="button-group">
+<button id="shortenBtn">🚀 Shorten</button>
+<button id="qrBtn">🎯 QR Me</button>
+<button id="customBtn">🧠 Custom</button>
+</div>
+<div class="input-group">
+<input id="urlInput" placeholder="Paste a thicc long link…" type="text"/>
+<button id="finalShorten">Bam! Shorten It</button>
+</div>
+<div id="output"></div>
+<footer style="text-align:center; margin-top:60px; color:#888; font-size:0.9rem;">🛑 We don’t track, trace, or peek. Every QR is generated on YOUR device. Because surveillance is gross. – Team CutIt</footer>
+</div>
+<div id="chatBubble" onclick="toggleChat()">💬</div>
+<div id="chatBox">
+<div id="chatContent"></div>
+<input id="chatInput" onkeypress="handleChat(event)" placeholder="Try: delete, qr, contact..." type="text"/>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
