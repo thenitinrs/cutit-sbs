@@ -3,33 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>cutit.sbs — Your vibe. Your code.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=Sora&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Cyber Kawaii QR</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="bg-blobs"></div>
+  <header>
+    <h1>✨ Cyber Kawaii QR ✨</h1>
+    <nav>
+      <button id="chatbotBtn">Cutie Chat</button>
+    </nav>
+  </header>
 
-  <section class="hero">
-    <h1>Your vibe.<br><span>Your code.</span></h1>
-    <p class="tagline">✨ Made by <strong>cutit.sbs</strong> — scan like a star!</p>
-    <div class="actions">
-      <button class="btn primary">💖 Create my QR</button>
-      <button class="btn secondary">💬 Chat with Cutie</button>
-    </div>
-    <div class="themes">
-      <span>🎨 Pick a vibe:</span>
-      <button class="theme-btn">Minimal</button>
-      <button class="theme-btn">Y2K</button>
-      <button class="theme-btn">Anime Pastel</button>
-      <button class="theme-btn">Cyber Minimal</button>
-      <button class="theme-btn">K-pop Neon</button>
-    </div>
-    <div class="version-bubble">v2 — Glow UI Edition 🌈</div>
-  </section>
+  <main>
+    <section class="card">
+      <h2>🎀 Summon Your QR</h2>
+      <select id="qrType">
+        <option value="url">🌐 URL</option>
+        <option value="wifi">📶 Wi-Fi</option>
+        <option value="mystery">❓ Mystery Message</option>
+      </select>
+      <input type="text" id="qrInput" placeholder="Enter your magic"/>
+      <button onclick="generateQR()">Summon QR</button>
+      <button onclick="surpriseQR()">🎉 Surprise Me</button>
+    </section>
 
-  <footer class="footer">
-    ✦ made with 💜 by the cutie team | “Terms & Chill” | “Privacy-ish” | © 2025 cutit.sbs
-  </footer>
+    <section class="qr-display" id="qrCardContainer">
+      <!-- QR card will appear here -->
+    </section>
+  </main>
+
+  <div id="chatbotModal" class="modal hidden">
+    <p>Hiya! I'm Cutie 🤖 Here to help~</p>
+    <!-- Future chatbot logic -->
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
