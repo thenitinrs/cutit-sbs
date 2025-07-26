@@ -1,122 +1,132 @@
-/* Basic Reset & Fonts */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Comic Neue', cursive;
-}
-
 body {
-  background: linear-gradient(135deg, #ffe8f1, #e0f7ff);
-  color: #333;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0;
+  font-family: 'Satoshi', sans-serif;
+  background: linear-gradient(135deg, #fef2f2, #e0f7ff, #ffe0fa);
+  background-size: 300% 300%;
+  animation: flowBG 15s infinite ease-in-out;
+  overflow-x: hidden;
 }
 
-/* Header Styling */
-header {
+@keyframes flowBG {
+  0%, 100% { background-position: left top; }
+  50% { background-position: right bottom; }
+}
+
+.glassyTitle {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 3.5rem;
   text-align: center;
-  margin-bottom: 2rem;
-}
-
-header h1 {
-  font-size: 2.5rem;
+  padding: 2rem;
   color: #ff69b4;
-  text-shadow: 1px 1px 3px #fff;
+  text-shadow: 0 0 20px #fff;
 }
 
-nav button {
-  padding: 0.6rem 1rem;
-  background: #e0aaff;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  cursor: pointer;
-}
-
-/* Card UI */
-.card {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  text-align: center;
+.floatingNav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.card h2 {
-  color: #b388eb;
-  margin-bottom: 1rem;
-}
-
-select, input[type="text"] {
-  padding: 0.8rem;
-  margin: 0.5rem 0;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  width: 80%;
-}
-
-button {
-  background: #ffb6c1;
+.cutieButton {
+  background: rgba(255, 182, 193, 0.7);
   border: none;
-  border-radius: 12px;
-  padding: 0.8rem 1.2rem;
-  margin: 0.5rem;
-  cursor: pointer;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
   font-weight: bold;
-  transition: transform 0.2s ease;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px #ffb6c1;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-button:hover {
-  transform: scale(1.05);
-  background: #ff87a2;
+.cutieButton:hover {
+  transform: scale(1.1) rotate(-2deg);
+  background: #ffc0cb;
+  color: #fff;
 }
 
-/* QR Card Display */
-.qr-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.qr-card {
-  background: rgba(240, 248, 255, 0.6);
-  backdrop-filter: blur(10px);
-  border: 2px dashed #bde0fe;
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-top: 1rem;
+.teamMessage {
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.qr-card img {
-  max-width: 220px;
-  margin: 1rem 0;
+  font-style: italic;
+  background: rgba(255,255,255,0.6);
+  padding: 2rem;
+  margin: 1rem;
   border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
 }
 
-/* Chatbot Modal */
-.modal {
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.qrCard {
+  background: linear-gradient(145deg, #ffd7f7, #c2faff);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px #c0f0ff;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  width: 200px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.qrCard:hover {
+  transform: rotate(2deg) scale(1.05);
+  box-shadow: 0 0 30px #ffa0dd;
+}
+
+.surpriseButton {
+  background-color: #ffc0cb;
+  border: none;
+  font-family: 'Clash Display', sans-serif;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px #ffadd1;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.surpriseButton:hover {
+  transform: scale(1.1) rotate(3deg);
+  background: #ffb6c1;
+  color: white;
+}
+
+.cutieChatOrb {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #fff;
-  border: 2px solid #ffb6c1;
-  border-radius: 16px;
-  padding: 1rem;
-  width: 240px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  display: none;
-  z-index: 999;
+  bottom: 24px;
+  right: 24px;
+  background: radial-gradient(circle, #ffdef2, #d0f7ff);
+  box-shadow: 0 0 15px #ff99cc;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 2rem;
+  animation: floatOrb 3s ease-in-out infinite;
+  cursor: pointer;
 }
 
-.modal.hidden {
-  display: none;
+@keyframes floatOrb {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.siteFooter {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 2rem;
+  background: #fff0f6;
+  color: #ff69b4;
+  font-style: italic;
 }
