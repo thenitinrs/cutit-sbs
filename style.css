@@ -1,133 +1,122 @@
-body {
+/* Basic Reset & Fonts */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Sora', sans-serif;
-  background: linear-gradient(135deg, #ffe8f3, #dff1ff);
-  overflow-x: hidden;
-  position: relative;
+  box-sizing: border-box;
+  font-family: 'Comic Neue', cursive;
+}
+
+body {
+  background: linear-gradient(135deg, #ffe8f1, #e0f7ff);
   color: #333;
-}
-
-.bg-blobs::before, .bg-blobs::after {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #ffcaff, #ffffff00);
-  border-radius: 50%;
-  filter: blur(120px);
-  animation: float 12s ease-in-out infinite;
-}
-.bg-blobs::after {
-  left: 60%;
-  top: 30%;
-}
-.bg-blobs::before {
-  left: 10%;
-  top: 50%;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(20px); }
-  100% { transform: translateY(0px); }
-}
-
-.hero {
-  padding: 6rem 1rem;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: 3.5rem;
-  color: #a855f7;
-  margin-bottom: 0.5rem;
-}
-
-.hero span {
-  color: #ec4899;
-}
-
-.tagline {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 2rem;
-}
-
-.actions {
+  padding: 2rem;
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Styling */
+header {
+  text-align: center;
   margin-bottom: 2rem;
 }
 
-.btn {
-  padding: 1rem 2rem;
+header h1 {
+  font-size: 2.5rem;
+  color: #ff69b4;
+  text-shadow: 1px 1px 3px #fff;
+}
+
+nav button {
+  padding: 0.6rem 1rem;
+  background: #e0aaff;
   border: none;
   border-radius: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.primary {
-  background: linear-gradient(135deg, #f472b6, #c084fc);
-  color: white;
-}
-
-.secondary {
-  background: white;
-  border: 2px solid #c084fc;
-  color: #a855f7;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-}
-
-.themes {
-  margin-top: 2rem;
-  font-size: 1rem;
-  color: #444;
-}
-
-.theme-btn {
-  margin: 0.5rem 0.3rem;
-  padding: 0.5rem 1rem;
-  background: #f3e8ff;
-  border: 1px solid #d8b4fe;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.theme-btn:hover {
-  background: #e9d5ff;
-  transform: translateY(-2px);
-}
-
-.version-bubble {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.5rem 1.2rem;
-  background: #ffffffaa;
-  backdrop-filter: blur(5px);
-  border-radius: 12px;
-  font-size: 0.85rem;
-  color: #666;
-}
-
-.footer {
+/* Card UI */
+.card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
   padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   text-align: center;
-  font-size: 0.85rem;
-  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.card h2 {
+  color: #b388eb;
+  margin-bottom: 1rem;
+}
+
+select, input[type="text"] {
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  width: 80%;
+}
+
+button {
+  background: #ffb6c1;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #ff87a2;
+}
+
+/* QR Card Display */
+.qr-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-card {
+  background: rgba(240, 248, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 2px dashed #bde0fe;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.qr-card img {
+  max-width: 220px;
+  margin: 1rem 0;
+  border-radius: 12px;
+}
+
+/* Chatbot Modal */
+.modal {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  border: 2px solid #ffb6c1;
+  border-radius: 16px;
+  padding: 1rem;
+  width: 240px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
 }
