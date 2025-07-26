@@ -1,49 +1,39 @@
-// QR Generation using goqr.me API (free!)
+// QR Generator
 function generateQR() {
-  const type = document.getElementById("qrType").value;
   const input = document.getElementById("qrInput").value;
-  let data = "";
+  const canvas = document.getElementById("qrCanvas");
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(input)}`;
 
-  if (type === "url") {
-    data = input;
-  } else if (type === "wifi") {
-    data = `WIFI:T:WPA;S:${input};P:yourpassword;;`;
-  } else if (type === "mystery") {
-    data = `Mystery Message: ${input}`;
-  }
-
-  const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(data)}`;
-  displayQR(qrURL);
+  const qrImage = new Image();
+  qrImage.src = qrUrl;
+  qrImage.onload = () => {
+    const ctx = canvas.getContext("2d");
+    canvas.width = 220;
+    canvas.height = 260; // extra space for watermark
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(qrImage, 0, 0, 220, 220);
+    ctx.font = "12px Poppins";
+    ctx.fillStyle = "#6b7280";
+    ctx.textAlign = "center";
+    ctx.fillText("made by cutit.sbs ✦ your vibe. your code", 110, 250);
+  };
 }
 
-// 🎉 Surprise Me QR (random aesthetic string)
-function surpriseQR() {
-  const surprises = [
-    "I’m not a snack—I’m a QR meal 👀",
-    "Scan to unlock your secret vibe",
-    "Pastel Pop Dream Incoming...",
-    "You summoned a K-pop QR 🔥"
+// Surprise QR Generator
+function surpriseMe() {
+  const vibes = [
+    "You're a sparkle in the static 🌟",
+    "Scan if you dare 💅",
+    "CutieCode unlocked ✨",
+    "Gen-Z royalty detected 👑"
   ];
-
-  const randomMsg = surprises[Math.floor(Math.random() * surprises.length)];
-  const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(randomMsg)}`;
-  displayQR(qrURL);
+  const random = vibes[Math.floor(Math.random() * vibes.length)];
+  document.getElementById("qrInput").value = random;
+  generateQR();
 }
 
-// 🌸 Display QR inside pastel card
-function displayQR(url) {
-  const container = document.getElementById("qrCardContainer");
-  container.innerHTML = `
-    <div class="qr-card">
-      <h3>Your Summoned QR ✨</h3>
-      <img src="${url}" alt="QR Code"/>
-      <p>Scan me, bestie 🧃</p>
-    </div>
-  `;
+// Chatbot Toggle
+function toggleChat() {
+  const chatWindow = document.getElementById("chatWindow");
+  chatWindow.style.display = (chatWindow.style.display === "none" || chatWindow.style.display === "") ? "block" : "none";
 }
-
-// 💬 Cutie Chat Toggle
-document.getElementById("chatbotBtn").addEventListener("click", () => {
-  const modal = document.getElementById("chatbotModal");
-  modal.classList.toggle("hidden");
-});
