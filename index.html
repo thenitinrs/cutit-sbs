@@ -2,41 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cyber Kawaii QR</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CutieVerse</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:ital@1&family=Clash+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <header>
-    <h1>✨ Cyber Kawaii QR ✨</h1>
-    <nav>
-      <button id="chatbotBtn">Cutie Chat</button>
+    <h1 class="glassyTitle">✨ Welcome to CutieVerse ✨</h1>
+    <nav class="floatingNav">
+      <button class="cutieButton">🏠 Home</button>
+      <button class="cutieButton">💎 Premium</button>
+      <button class="cutieButton">📞 Contact</button>
     </nav>
   </header>
 
-  <main>
-    <section class="card">
-      <h2>🎀 Summon Your QR</h2>
-      <select id="qrType">
-        <option value="url">🌐 URL</option>
-        <option value="wifi">📶 Wi-Fi</option>
-        <option value="mystery">❓ Mystery Message</option>
-      </select>
-      <input type="text" id="qrInput" placeholder="Enter your magic"/>
-      <button onclick="generateQR()">Summon QR</button>
-      <button onclick="surpriseQR()">🎉 Surprise Me</button>
-    </section>
+  <section class="teamMessage">
+    <p>Hey bestie 💖 We made this glittery QR heaven just for *you*. Dive in and sparkle!</p>
+  </section>
 
-    <section class="qr-display" id="qrCardContainer">
-      <!-- QR card will appear here -->
-    </section>
-  </main>
+  <section class="features">
+    <button class="surpriseButton">🎁 Surprise Me</button>
+    <div class="qrCard">✨ Scan Queen QR ✨</div>
+    <div class="qrCard">💌 Mystery Message</div>
+    <div class="qrCard">📶 Party Wi-Fi QR</div>
+    <div class="qrCard">💔 One-Time Destruct QR</div>
+  </section>
 
-  <div id="chatbotModal" class="modal hidden">
-    <p>Hiya! I'm Cutie 🤖 Here to help~</p>
-    <!-- Future chatbot logic -->
-  </div>
+  <div class="cutieChatOrb" onclick="openCutieChat()">🐰</div>
 
-  <script src="main.js"></script>
+  <footer class="siteFooter">
+    <p>Made with glitter, caffeine & delusion by Cutit’s Crew 💖 All rights reserved for the vibes.</p>
+  </footer>
+
 </body>
 </html>
