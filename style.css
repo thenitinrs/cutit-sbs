@@ -1,63 +1,163 @@
-body {
-  font-family: 'Space Grotesk', sans-serif;
+/* Base Reset + Font */
+* {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #f3d1f4, #c7f0ff);
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f6e8ff, #d2ecfc);
+  overflow-x: hidden;
   color: #333;
 }
 
-.team-message, .about, .qr-cards, .site-footer {
-  margin: 40px;
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-h2, h3 {
-  color: #5e3eff;
-}
-
-.chatbot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(94, 62, 255, 0.4);
-  font-weight: bold;
-  animation: floatChat 3s infinite ease-in-out;
-}
-
-@keyframes floatChat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.qr-cards {
+/* 💫 Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.card {
-  flex: 1;
-  min-width: 250px;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 1rem 2rem;
   background: rgba(255, 255, 255, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 0 15px rgba(255, 183, 255, 0.4);
-  transition: transform 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 999;
 }
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 92, 230, 0.6);
+.brand {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #a855f7;
 }
-
-a {
-  color: #ff2f91;
+.nav-links a {
+  margin-left: 1.5rem;
+  color: #333;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: #a855f7;
+}
+
+/* ✨ Mascot Float */
+.mascot-container {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  z-index: 9;
+  animation: floaty 4s infinite ease-in-out;
+}
+.mascot {
+  width: 80px;
+  filter: drop-shadow(0 0 6px #ffccf9);
+}
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* 🔮 Hero QR Card */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+.qr-card {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  max-width: 500px;
+}
+.qr-card h1 {
+  font-size: 1.8rem;
+  color: #a855f7;
+}
+.qr-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+.qr-card button {
+  margin: 1rem 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background: #a855f7;
+  border: none;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.qr-card button:hover {
+  background: #9333ea;
+}
+.watermark {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* 💬 Chatbot Orb */
+.chatbot-orb {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at center, #a855f7, #9333ea);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.chat-modal {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 320px;
+  background: white;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  display: none;
+}
+
+/* 📄 Footer (About Us) */
+.about-container {
+  padding: 3rem 2rem;
+  background: linear-gradient(to right, #fbeeff, #e3f6ff);
+  text-align: center;
+}
+.about-container h2 {
+  font-size: 1.5rem;
+  color: #9333ea;
+}
+.about-container p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+.about-container small {
+  display: block;
+  margin-top: 1rem;
+  color: #777;
 }
