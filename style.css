@@ -1,132 +1,63 @@
 body {
+  font-family: 'Space Grotesk', sans-serif;
   margin: 0;
-  font-family: 'Satoshi', sans-serif;
-  background: linear-gradient(135deg, #fef2f2, #e0f7ff, #ffe0fa);
-  background-size: 300% 300%;
-  animation: flowBG 15s infinite ease-in-out;
-  overflow-x: hidden;
+  padding: 0;
+  background: linear-gradient(to bottom right, #f3d1f4, #c7f0ff);
+  color: #333;
 }
 
-@keyframes flowBG {
-  0%, 100% { background-position: left top; }
-  50% { background-position: right bottom; }
-}
-
-.glassyTitle {
-  font-family: 'Clash Display', sans-serif;
-  font-size: 3.5rem;
-  text-align: center;
-  padding: 2rem;
-  color: #ff69b4;
-  text-shadow: 0 0 20px #fff;
-}
-
-.floatingNav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.cutieButton {
-  background: rgba(255, 182, 193, 0.7);
-  border: none;
+.team-message, .about, .qr-cards, .site-footer {
+  margin: 40px;
+  padding: 30px;
   border-radius: 20px;
-  padding: 1rem 1.5rem;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px #ffb6c1;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.cutieButton:hover {
-  transform: scale(1.1) rotate(-2deg);
-  background: #ffc0cb;
-  color: #fff;
-}
-
-.teamMessage {
-  text-align: center;
-  font-style: italic;
-  background: rgba(255,255,255,0.6);
-  padding: 2rem;
-  margin: 1rem;
-  border-radius: 12px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
+h2, h3 {
+  color: #5e3eff;
 }
 
-.qrCard {
-  background: linear-gradient(145deg, #ffd7f7, #c2faff);
-  border-radius: 18px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 24px #c0f0ff;
-  font-size: 1.2rem;
-  text-align: center;
-  font-weight: bold;
-  width: 200px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.qrCard:hover {
-  transform: rotate(2deg) scale(1.05);
-  box-shadow: 0 0 30px #ffa0dd;
-}
-
-.surpriseButton {
-  background-color: #ffc0cb;
-  border: none;
-  font-family: 'Clash Display', sans-serif;
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px #ffadd1;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.surpriseButton:hover {
-  transform: scale(1.1) rotate(3deg);
-  background: #ffb6c1;
-  color: white;
-}
-
-.cutieChatOrb {
+.chatbot {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: radial-gradient(circle, #ffdef2, #d0f7ff);
-  box-shadow: 0 0 15px #ff99cc;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  font-size: 2rem;
-  animation: floatOrb 3s ease-in-out infinite;
-  cursor: pointer;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(94, 62, 255, 0.4);
+  font-weight: bold;
+  animation: floatChat 3s infinite ease-in-out;
 }
 
-@keyframes floatOrb {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+@keyframes floatChat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.siteFooter {
-  text-align: center;
-  font-size: 0.9rem;
-  padding: 2rem;
-  background: #fff0f6;
-  color: #ff69b4;
-  font-style: italic;
+.qr-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(255, 183, 255, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 92, 230, 0.6);
+}
+
+a {
+  color: #ff2f91;
+  text-decoration: none;
 }
