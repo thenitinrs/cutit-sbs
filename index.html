@@ -3,58 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QR Party 🌈✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <title>Cutit.sbs ✦ Your vibe. Your code.</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Team Message -->
-  <section class="team-message">
-    <h2>Hey there, trendsetter 💫</h2>
-    <p>We’re the wild minds behind this magical little corner of the internet—crafting QR chaos, aesthetic wizardry, and utility that slaps. Everything you see here is designed to delight, confuse (just a bit), and make Gen-Z proud. Welcome to the club. 💖</p>
-  </section>
+  <!-- 🌈 HEADER NAV -->
+  <header class="navbar">
+    <div class="brand">Cutit.sbs</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Premium</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </header>
 
-  <!-- About Section -->
-  <section class="about">
-    <h2>About Us</h2>
-    <p>Not your average QR tool—we're remixing the future of digital utility with vibes, colors, and chaos. Join the rebellion.</p>
-  </section>
-
-  <!-- Floating Chatbot -->
-  <div class="chatbot">
-    <p>✨ Got questions? I'm the sassbot 🐸</p>
+  <!-- ✨ MASCOT FLOAT -->
+  <div class="mascot-container">
+    <img src="mascot.gif" alt="Cutit Mascot" class="mascot">
   </div>
 
-  <!-- Glowing QR Cards -->
-  <section class="qr-cards">
-    <div class="card">
-      <h3>One-Time QR 🔒</h3>
-      <p>Generate a QR code that self-destructs after one use. Drama!</p>
-    </div>
-    <div class="card">
-      <h3>Mystery Message 🎁</h3>
-      <p>Send a surprise to your friends. Might be cute. Might be chaos.</p>
-    </div>
-    <div class="card">
-      <h3>Party Wi-Fi 🎉</h3>
-      <p>QR code that connects guests to your Wi-Fi with zero cringe.</p>
+  <!-- 🔮 QR GENERATOR HERO -->
+  <section class="hero">
+    <div class="qr-card">
+      <h1>✨ Generate your vibe-coded QR ✨</h1>
+      <input type="text" id="qrInput" placeholder="Enter your link, message, or mood...">
+      <button onclick="generateQR()">Generate</button>
+      <button onclick="surpriseMe()">Surprise Me</button>
+      <canvas id="qrCanvas"></canvas>
+      <p class="watermark">made by cutit.sbs ✦ your vibe. your code</p>
     </div>
   </section>
 
-  <!-- Footer Section -->
-  <footer class="site-footer">
-    <div class="footer-links">
-      <h3>Terms & Chill</h3>
-      <p>Using this site means you're down with our funky terms. Don't worry, we won't email you weird stuff or steal your cat pics.</p>
-      
-      <h3>Privacy Vibes</h3>
-      <p>Your secrets are safe—unless they’re just *too* good not to share (jk). We only collect what's needed to keep things smooth, sparkly, and secure.</p>
-      
-      <h3>Contact the Chaos</h3>
-      <p>Got ideas? Fan theories? Conspiracy charts? Hit us up: <a href="mailto:team@qr.party">team@qr.party</a></p>
-    </div>
+  <!-- 💬 CHATBOT ORB -->
+  <div class="chatbot-orb" onclick="toggleChat()">
+    💬
+  </div>
+  <div id="chatWindow" class="chat-modal">
+    <h3>Hey Cutie 👀 What can I vibe-check for you?</h3>
+    <!-- Chat content will be loaded here -->
+  </div>
+
+  <!-- 📄 ABOUT US BOTTOM SECTION -->
+  <footer class="about-container">
+    <h2>About Us</h2>
+    <p>We’re Cutit.sbs—design renegades, code romantics, and vibe evangelists. We turn pixels into personality and QR codes into culture. Meet our mascot, our moods, and our mission to surprise you.</p>
+    <small>© 2025 Cutit.sbs ✦ Powered by your curiosity</small>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
